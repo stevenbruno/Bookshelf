@@ -32,28 +32,19 @@ function clearForm() {
 function addBooktoShelf() {
   const row = document.createElement("tr");
   const recentBook = myLibrary[myLibrary.length - 1];
-  
-  const titleData = document.createElement("td");
-  const titleNode = document.createTextNode(`${recentBook.title}`);
-  titleData.appendChild(titleNode);
 
-  const authorData = document.createElement("td");
-  const authorNode = document.createTextNode(`${recentBook.author}`);
-  authorData.appendChild(authorNode);
+  for (var prop in recentBook) {
+    if (prop == 'info') {
+      continue;
+    }
 
-  const pagesData = document.createElement("td");
-  const pagesNode = document.createTextNode(`${recentBook.pages}`);
-  pagesData.appendChild(pagesNode);
+    const td = document.createElement("td");
+    const node = document.createTextNode(`${recentBook[prop]}`);
+    td.appendChild(node);
+    console.log(td);
+    row.appendChild(td);
+  }
 
-  const readData = document.createElement("td");
-  const readNode = document.createTextNode(`${recentBook.read == true? 'yes' : 'no'}`);
-  readData.appendChild(readNode);
-
-  row.appendChild(titleData);
-  row.appendChild(authorData);
-  row.appendChild(pagesData);
-  row.appendChild(readData);
-  
   bookTable.appendChild(row);
 }
 
