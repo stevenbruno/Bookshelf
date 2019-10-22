@@ -1,0 +1,39 @@
+
+.html {
+  font-size: 16px;
+}
+
+.addBook {
+  display: flex;
+  flex-direction: column;
+  width: 240px;
+  align-items: flex-start;
+  margin: 24px 32px;
+}
+
+.addBook input, 
+.addBook div {
+  margin-bottom: 12px;
+}
+
+.addBook label {
+  margin-bottom: 2px;
+}
+.right {
+  align-self: flex-end;
+}
+
+input {
+  border-radius: 4px;
+  height: 24px;
+}
+
+.checkboxGroup {
+  display: flex;
+  align-items: center;
+}
+
+.checkboxGroup input {
+  margin-bottom: 0;
+  margin-right: 8px;
+}
