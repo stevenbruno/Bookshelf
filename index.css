@@ -15,8 +15,7 @@ main {
   flex-direction: column;
   width: 240px;
   align-items: flex-start;
-  margin-top: 24px;
-  margin-bottom: 56px;
+  margin-bottom: 80px;
 }
 
 .addBook input, 

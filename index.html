@@ -10,6 +10,7 @@
 </head>
 <body>
   <main>
+    <h3>Add a Book to your Bookshelf</h3>
     <form action="#" class="addBook">
       <label for="title">Book Title</label>
       <input type="text" name="title" id="title">
@@ -24,19 +25,23 @@
       <button type="button" class="right" id="addBookButton">Add book</button>
     </form>
     <table id="bookShelf">
-      <tr>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Pages</th>
-        <th>Read</th>
-      </tr>
-      <tr>
-        <td>ExampleBook</td>
-        <td>Jane Doe</td>
-        <td>300</td>
-        <td>true</td>
-        <td class="trash">X</td>
-      </tr>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Pages</th>
+          <th>Read</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+        <tr data-row="0">
+          <td>ExampleBook</td>
+          <td>Jane Doe</td>
+          <td>300</td>
+          <td>true</td>
+          <td class="trash" data-row="0">X</td>
+        </tr>
+      </tbody>
     </table>
   </main>
   <script src="index.js"></script>
