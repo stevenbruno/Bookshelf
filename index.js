@@ -44,6 +44,12 @@ function addBooktoShelf() {
     console.log(td);
     row.appendChild(td);
   }
+  
+  const trash = document.createElement("td");
+  const trashNode = document.createTextNode('X');
+  trash.appendChild(trashNode);
+  trash.classList.add("trash");
+  row.appendChild(trash);
 
   bookTable.appendChild(row);
 }

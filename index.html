@@ -9,27 +9,36 @@
   <title>Document</title>
 </head>
 <body>
-  <form action="#" class="addBook">
-    <label for="title">Book Title</label>
-    <input type="text" name="title" id="title">
-    <label for="author">Author</label>
-    <input type="text" name="author" id="author">
-    <label for="pages">Number of Pages</label>
-    <input type="number" name="pages" id="pages">
-    <div class="checkboxGroup">
-      <input type="checkbox" name="read" id="read">
-      <label for="read">I have read this book</label>
-    </div>
-    <button type="button" class="right" id="addBookButton">Add book</button>
-  </form>
-  <table id="bookShelf">
-    <tr>
-      <th>Title</th>
-      <th>Author</th>
-      <th>Pages</th>
-      <th>Read</th>
-    </tr>
-  </table>
+  <main>
+    <form action="#" class="addBook">
+      <label for="title">Book Title</label>
+      <input type="text" name="title" id="title">
+      <label for="author">Author</label>
+      <input type="text" name="author" id="author">
+      <label for="pages">Number of Pages</label>
+      <input type="number" name="pages" id="pages">
+      <div class="checkboxGroup">
+        <input type="checkbox" name="read" id="read">
+        <label for="read">I have read this book</label>
+      </div>
+      <button type="button" class="right" id="addBookButton">Add book</button>
+    </form>
+    <table id="bookShelf">
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Pages</th>
+        <th>Read</th>
+      </tr>
+      <tr>
+        <td>ExampleBook</td>
+        <td>Jane Doe</td>
+        <td>300</td>
+        <td>true</td>
+        <td class="trash">X</td>
+      </tr>
+    </table>
+  </main>
   <script src="index.js"></script>
 </body>
 </html>
