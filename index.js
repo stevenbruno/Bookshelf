@@ -77,14 +77,20 @@ function removeBookFromShelf() {
 
 function removeBookFromLibrary() {
   const targetRow = event.target;
-  myLibrary.splice(`${targetRow.dataset.row}`, 1);
+  myLibrary.splice(parseInt(targetRow.dataset.row, 10), 1);
 }
 
 function updateDataAttributes() {
   const targetRow = event.target;
-  const allRows = document.querySelectorAll('[data-row]');
-  console.log(targetRow);
-  console.log(allRows);
+  const allRows = document.querySelectorAll('tr[data-row]');
+  allRows.forEach((row) => {
+    if (parseInt(row.dataset.row, 10) <= parseInt(targetRow.dataset.row, 10)) {
+      return;
+    } 
+    row.dataset.row = (parseInt(row.dataset.row, 10) - 1).toString();
+    const td = row.querySelectorAll('td[data-row]');
+    td[0].dataset.row = row.dataset.row;
+  })
 }
 
 document.getElementById("addBookButton").addEventListener("click", addBookToLibrary);
