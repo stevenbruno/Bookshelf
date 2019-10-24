@@ -37,10 +37,15 @@ function addBooktoShelf() {
   const recentBook = myLibrary[myLibrary.length - 1];
 
   for (var prop in recentBook) {
-    if (prop == 'info') {
+    if (prop === 'info') {
       continue;
     }
     const td = document.createElement("td");
+    if (prop === 'read') {
+      td.classList.add('read');
+      td.addEventListener("click", toggleShelfReadStatus);
+      td.addEventListener("click", toggleLibraryReadStatus);
+    }
     const node = document.createTextNode(`${recentBook[prop]}`);
     td.appendChild(node);
     row.appendChild(td);
@@ -93,6 +98,26 @@ function updateDataAttributes() {
   })
 }
 
+function toggleShelfReadStatus() {
+  const td = event.target;
+  if (td.innerHTML === 'true') {
+    td.innerHTML = 'false';
+    return;
+  }
+  td.innerHTML = 'true';
+}
+
+function toggleLibraryReadStatus() {
+  const td = event.target;
+  const index = td.parentNode.dataset.row;
+  const libraryObj = myLibrary[index];
+  if (libraryObj.read === true) {
+    libraryObj.read = false;
+    return;
+  }
+  libraryObj.read = true;
+}
+
 document.getElementById("addBookButton").addEventListener("click", addBookToLibrary);
 document.getElementById("addBookButton").addEventListener("click", clearForm);
 document.getElementById("addBookButton").addEventListener("click", addBooktoShelf);
@@ -102,4 +127,10 @@ trashIcons.forEach( td => {
   td.addEventListener("click", removeBookFromShelf);
   td.addEventListener("click", removeBookFromLibrary);
   td.addEventListener("click", updateDataAttributes);
+});
+
+const readStatuses = document.querySelectorAll("td.read");
+readStatuses.forEach( td => {
+  td.addEventListener("click", toggleShelfReadStatus);
+  td.addEventListener("click", toggleLibraryReadStatus);
 });
