@@ -43,7 +43,6 @@ function addBooktoShelf() {
     const td = document.createElement("td");
     const node = document.createTextNode(`${recentBook[prop]}`);
     td.appendChild(node);
-    console.log(td);
     row.appendChild(td);
   }
   
@@ -60,21 +59,32 @@ function createTrashElement() {
   const trashNode = document.createTextNode('X');
   trash.appendChild(trashNode);
   trash.classList.add("trash");
-  trash.setAttribute("data-row", `${myLibrary.length}`)
+  trash.setAttribute("data-row", `${myLibrary.length - 1}`)
   trash.addEventListener("click", removeBookFromShelf);
   trash.addEventListener("click", removeBookFromLibrary);
-  // trash.addEventListener("click", updateDataAttributes);
+  trash.addEventListener("click", updateDataAttributes);
   return trash;
 }
 
 function removeBookFromShelf() {
   const targetRow = event.target;
-  bookTable.deleteRow(`${targetRow.dataset.row + 1}`)
+  if (!targetRow.parentNode.nextSibling) {
+    bookTable.deleteRow(-1);
+    return;
+  }
+  bookTable.deleteRow(parseInt(targetRow.dataset.row, 10) + 1)
 }
 
 function removeBookFromLibrary() {
   const targetRow = event.target;
   myLibrary.splice(`${targetRow.dataset.row}`, 1);
+}
+
+function updateDataAttributes() {
+  const targetRow = event.target;
+  const allRows = document.querySelectorAll('[data-row]');
+  console.log(targetRow);
+  console.log(allRows);
 }
 
 document.getElementById("addBookButton").addEventListener("click", addBookToLibrary);
@@ -85,5 +95,5 @@ const trashIcons = document.querySelectorAll("td.trash");
 trashIcons.forEach( td => {
   td.addEventListener("click", removeBookFromShelf);
   td.addEventListener("click", removeBookFromLibrary);
-  // td.addEventListener("click", updateDataAttributes);
+  td.addEventListener("click", updateDataAttributes);
 });
